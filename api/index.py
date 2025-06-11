@@ -19,8 +19,8 @@ def summarize_text():
     try:
         result = summarizer.predict(
             text=input_text,
-            max_length=150,
-            min_length=30,
+            max_length=350,
+            min_length=40,
             api_name="/summarize_text"
         )
         return jsonify({"summary": result})
@@ -31,7 +31,7 @@ def summarize_text():
 def generate_question():
     data = request.get_json()
     input_text = data.get("text")
-    num_questions = data.get("num_questions", 1)
+    num_questions = data.get("num_questions", 8)
 
     if not input_text:
         return jsonify({"error": "Input text is required"}), 400
@@ -58,8 +58,8 @@ def process_text():
     try:
         summary = summarizer.predict(
             text=input_text,
-            max_length=150,
-            min_length=30,
+            max_length=350,
+            min_length=40,
             api_name="/summarize_text"
         )
         questions = question_generator.predict(
