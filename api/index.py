@@ -49,7 +49,7 @@ def generate_question():
 def process_text():
     data = request.get_json()
     input_text = data.get("text")
-    num_questions = data.get("num_questions", 1)
+    num_questions = data.get("num_questions", 8)
 
     if not input_text:
         return jsonify({"error": "Input text is required"}), 400
